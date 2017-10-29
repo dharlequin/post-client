@@ -7,8 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 
 const routes = [
-  { path: '', components: LoginComponent },
-  { path: 'home', components: HomeComponent }
+  { path: '', component: LoginComponent },
+  { path: 'home', component: HomeComponent }
 ];
 
 @NgModule({
