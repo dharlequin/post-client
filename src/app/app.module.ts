@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { NavPanelComponent } from './home/nav-panel/nav-panel.component';
+import { MailListComponent } from './home/mail-list/mail-list.component';
 
 const routes = [
   { path: '', component: LoginComponent },
@@ -16,6 +18,8 @@ const routes = [
     AppComponent,
     LoginComponent,
     HomeComponent,
+    NavPanelComponent,
+    MailListComponent,
   ],
   imports: [
     BrowserModule,
