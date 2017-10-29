@@ -1,3 +1,6 @@
-<p>
-  inbox works!
-</p>
+<div *ngFor="let mail of mails" style="margin: 5px">
+  <div class="mail-element">
+    {{mail.sender}} {{mail.date}}
+    {{mail.subject}}
+  </div>
+</div>
