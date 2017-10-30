@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule, Provider} from '@angular/core';
+import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {RouterModule} from '@angular/router';
@@ -11,7 +11,8 @@ import {InboxComponent} from './home/mail-list/inbox/inbox.component';
 import {SentComponent} from './home/mail-list/sent/sent.component';
 import {DraftComponent} from './home/mail-list/draft/draft.component';
 import {SpamComponent} from './home/mail-list/spam/spam.component';
-import {MailService} from "./mail.service";
+import {MailService} from './mail.service';
+import { MailComponent } from './home/mail-list/mail/mail.component';
 
 const routes = [
   {path: '', component: LoginComponent},
@@ -22,7 +23,8 @@ const routes = [
       {path: 'inbox', component: InboxComponent},
       {path: 'sent', component: SentComponent},
       {path: 'draft', component: DraftComponent},
-      {path: 'spam', component: SpamComponent}
+      {path: 'spam', component: SpamComponent},
+      {path: 'mail/:id', component: MailComponent}
     ]
   }
 ];
@@ -38,6 +40,7 @@ const routes = [
     SentComponent,
     DraftComponent,
     SpamComponent,
+    MailComponent,
   ],
   imports: [
     BrowserModule,

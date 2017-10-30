@@ -1,0 +1,12 @@
+<div class="mail-header" (mailSelected)="mail=mail">
+  <ul>
+    <li>{{mail.sender}}</li>
+    <li>{{mail.date | date: 'shortDate'}}</li>
+    <li>{{mail.subject}}</li>
+  </ul>
+</div>
+<div class="mail-body">
+  {{mail.body}}
+</div>
+
+<button routerLink="{{mail.type}}">Back</button>

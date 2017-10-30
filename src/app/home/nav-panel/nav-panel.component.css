@@ -1,6 +1,9 @@
 a {
   text-transform: uppercase;
-  text-decoration: none;
+}
+
+.nav-menu {
+  margin: 5px;
 }
 
 .nav-link {
@@ -13,11 +16,14 @@ a {
   margin-top: 2px;
   text-align: center;
   transition: 0.3s;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: monospace;
 }
 
 .nav-link:hover {
   color: black;
-  background-color: chocolate;
+  background-color: antiquewhite;
   transition: 0.3s;
   border: 1px solid brown;
 }

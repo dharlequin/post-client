@@ -3,7 +3,52 @@ li, ul {
   list-style-type: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 .centered {
   margin: auto;
   width: 20%;
 }
+.mail-element {
+  color: #555555;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 10px;
+  display: block;
+  margin: 5px;
+  text-align: center;
+  transition: 0.3s;
+  width: 600px;
+  overflow: auto;
+  font-family: monospace;
+}
+.mail-element:hover {
+  color: black;
+  background-color: antiquewhite;
+  transition: 0.3s;
+  border: 1px solid brown;
+}
+
+.mail-element .sender {
+  float: left;
+  font-size: 18px;
+  display: block;
+  font-weight: bold;
+}
+
+.mail-element .date {
+  float: right;
+  font-size: 16px;
+  display: block;
+  color: dimgrey;
+}
+
+.mail-element .subject {
+  float: left;
+  font-size: 16px;
+  display: block;
+  clear: both;
+}
+

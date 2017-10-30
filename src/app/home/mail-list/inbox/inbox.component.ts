@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MailService} from '../../../mail.service';
+import {Mail} from '../../../mail';
 
 @Component({
   selector: 'app-inbox',
@@ -7,8 +8,8 @@ import {MailService} from '../../../mail.service';
   styleUrls: ['./inbox.component.css']
 })
 export class InboxComponent implements OnInit {
-  public mails;
-  public mail;
+  public mails: Mail[];
+  public mail: Mail;
 
   constructor(private _mailService: MailService) {
   }
@@ -16,5 +17,4 @@ export class InboxComponent implements OnInit {
   ngOnInit() {
     this.mails = this._mailService.getAll();
   }
-
 }
