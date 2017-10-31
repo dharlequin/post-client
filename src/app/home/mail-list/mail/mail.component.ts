@@ -14,7 +14,7 @@ export class MailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private _mailService: MailService) {
     this.route.params.subscribe(params => {
-      this.mailId = params['id'];
+      this.mailId =  parseInt(params['id'], 10);
       this.getMailsWithId(this.mailId);
     });
   }

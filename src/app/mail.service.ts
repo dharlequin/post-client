@@ -31,7 +31,7 @@ export class MailService {
     for (const mail of mails) {
       console.log('Mail with id ' + mail.id);
       console.log(mail.id + ' === ' + id + ' = ' + (mail.id === id));
-      if (mail.id === +id) {
+      if (mail.id === id) {
         console.log('Found mail with id ' + id);
         return mail;
       }
