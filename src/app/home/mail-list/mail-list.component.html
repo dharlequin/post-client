@@ -1,1 +1,8 @@
-<router-outlet></router-outlet>
+<div *ngFor="let mail of mails">
+  <a routerLink="mail/{{mail.id}}">
+    <div class="mail-element">
+      <span class="sender">{{mail.sender }}</span> <span class="date">{{mail.date | date: 'shortDate'}}</span>
+      <span class="subject"> Subject: {{mail.subject}}</span>
+    </div>
+  </a>
+</div>

@@ -12,8 +12,29 @@ export class MailService {
   public getAll(): Mail[] {
     return MAILS;
   }
+
+  public getMailByType(type: string): Mail[] {
+    const mails: Mail[] = this.getAll();
+    const filteredMails: Mail[] = [];
+    for (const mail of mails) {
+      if (mail.type === type) {
+        filteredMails.push(mail);
+      }
+    }
+    return filteredMails;
+  }
+
   public getMail(id: number) {
-   return (mails => mails.find(mail => mail.id === id));
+    console.log('Getting mail with id ' + id);
+    const mails: Mail[] = this.getAll();
+    console.log('Retrieved mails ' + mails);
+    for (const mail of mails) {
+      console.log('Mail with id ' + mail.id);
+      if (mail.id === id) {
+        console.log('Found mail with id ' + id);
+        return mail;
+      }
+    }
   }
 
 }

@@ -9,13 +9,20 @@ import {MailService} from '../../../mail.service';
 })
 export class MailComponent implements OnInit {
   private mail;
-  private mailId;
+  private mailId: number;
 
-  constructor(private route: ActivatedRoute, private _mailServive: MailService) {
-    this.route.params.subscribe(params => this.mailId);
+  constructor(private route: ActivatedRoute, private _mailService: MailService) {
+    this.route.params.subscribe(params => {
+      this.mailId = params['id'];
+      this.mail = this.getMailsWithId(this.mailId);
+      console.log(params);
+    });
   }
 
   ngOnInit() {
-    this.mail = this._mailServive.getMail(this.mailId);
+  }
+
+  public getMailsWithId(id: number) {
+    this.mail = this._mailService.getMail(id);
   }
 }
