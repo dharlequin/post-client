@@ -1,0 +1,40 @@
+.back-link {
+  color: #555555;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 10px;
+  display: block;
+  margin-bottom: 2px;
+  margin-top: 2px;
+  text-align: center;
+  transition: 0.3s;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: monospace;
+  width: 100px;
+}
+
+.back-link:hover {
+  color: black;
+  background-color: antiquewhite;
+  transition: 0.3s;
+  border: 1px solid brown;
+}
+
+.mail-container {
+  margin: 10px;
+}
+
+.mail-header, .mail-body {
+  color: #555555;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+
+
+.sender {
+  font-weight: bold;
+}

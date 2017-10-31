@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MailService} from '../../../mail.service';
+import {Mail} from '../../../mail';
 
 @Component({
   selector: 'app-mail',
@@ -8,14 +9,13 @@ import {MailService} from '../../../mail.service';
   styleUrls: ['./mail.component.css']
 })
 export class MailComponent implements OnInit {
-  private mail;
+  private mail: Mail;
   private mailId: number;
 
   constructor(private route: ActivatedRoute, private _mailService: MailService) {
     this.route.params.subscribe(params => {
       this.mailId = params['id'];
-      this.mail = this.getMailsWithId(this.mailId);
-      console.log(params);
+      this.getMailsWithId(this.mailId);
     });
   }
 
