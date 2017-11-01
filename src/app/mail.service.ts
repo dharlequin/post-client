@@ -4,6 +4,7 @@ import {MAILS} from './mock-mails';
 import {HttpClient} from '@angular/common/http';
 import {Mailbox} from './mailbox';
 import {Observable} from 'rxjs/Observable';
+import {Letter} from './letter';
 
 export const MAILBOXES = {
   mailboxes: [
@@ -127,8 +128,8 @@ export class MailService {
     return null;
   }
 
-  public getAllHttp() {
-    return this._http.get<Mail[]>('http://test-api.javascript.ru/v1/tonyp/users');
+  public getAllLetters(): Observable<Letter[]> {
+    return this._http.get<Letter[]>('http://test-api.javascript.ru/v1/tonyp/letters');
   }
   public addMailBoxes() {
     return this._http.post('http://test-api.javascript.ru/v1/tonyp', MAILBOXES);
@@ -145,12 +146,12 @@ export class MailService {
   public deleteLetters() {
     return this._http.delete('http://test-api.javascript.ru/v1/tonyp/letters', {responseType: 'text'});
   }
-  public getAll(): Mail[] {
+  public getAllMails(): Mail[] {
     return MAILS;
   }
 
   public getMailByType(type: string): Mail[] {
-    const mails: Mail[] = this.getAll();
+    const mails: Mail[] = this.getAllMails();
     const filteredMails: Mail[] = [];
     for (const mail of mails) {
       if (mail.type === type) {
@@ -161,7 +162,7 @@ export class MailService {
   }
 
   public getMail(id: number) {
-    const mails: Mail[] = this.getAll();
+    const mails: Mail[] = this.getAllMails();
     for (const mail of mails) {
       if (mail.id === id) {
         return mail;

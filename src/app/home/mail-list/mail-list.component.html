@@ -1,8 +1,17 @@
-<div *ngFor="let mail of mails">
-  <a routerLink="mail/{{mail.id}}">
+<!--<div *ngFor="let mail of mails">-->
+  <!--<a routerLink="mail/{{mail.id}}">-->
+    <!--<div class="mail-element">-->
+      <!--<span class="sender">{{mail.sender }}</span> <span class="date">{{mail.date | date: 'shortDate'}}</span>-->
+      <!--<span class="subject"> Subject: {{mail.subject}}</span>-->
+    <!--</div>-->
+  <!--</a>-->
+<!--</div>-->
+
+<div *ngFor="let letter of letters">
+  <a routerLink="mail/{{letter._id}}">
     <div class="mail-element">
-      <span class="sender">{{mail.sender }}</span> <span class="date">{{mail.date | date: 'shortDate'}}</span>
-      <span class="subject"> Subject: {{mail.subject}}</span>
+      <span class="sender">{{letter.to }}</span>
+      <span class="subject"> Subject: {{letter.subject}}</span>
     </div>
   </a>
 </div>
