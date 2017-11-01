@@ -9,6 +9,8 @@ import {NavPanelComponent} from './home/nav-panel/nav-panel.component';
 import {MailListComponent} from './home/mail-list/mail-list.component';
 import {MailService} from './mail.service';
 import {MailComponent} from './home/mail-list/mail/mail.component';
+import {HttpClientModule} from '@angular/common/http';
+import { SettingsComponent } from './home/settings/settings.component';
 
 const routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -17,6 +19,7 @@ const routes = [
   {path: 'home', component: HomeComponent,
     children: [
       {path: 'box/:box', component: MailListComponent},
+      {path: 'settings', component: SettingsComponent},
       {path: 'box/:box/mail/:id', redirectTo: 'mail/:id', pathMatch: 'full'},
       {path: 'mail/:id', component: MailComponent}
     ]},
@@ -30,9 +33,11 @@ const routes = [
     NavPanelComponent,
     MailListComponent,
     MailComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [MailService],
