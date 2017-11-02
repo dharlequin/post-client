@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MailService} from '../../mail.service';
 import {ActivatedRoute} from '@angular/router';
-import {Mail} from '../../mail';
 import {Letter} from '../../letter';
 
 @Component({
@@ -11,7 +10,6 @@ import {Letter} from '../../letter';
 })
 export class MailListComponent implements OnInit {
   private box: string;
-  private mails: Mail[];
   private letters: Letter[] = [];
 
   constructor(private route: ActivatedRoute, private _mailService: MailService) {

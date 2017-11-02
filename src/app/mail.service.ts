@@ -1,6 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Mail} from './mail';
-import {MAILS} from './mock-mails';
 import {HttpClient} from '@angular/common/http';
 import {Mailbox} from './mailbox';
 import {Observable} from 'rxjs/Observable';
@@ -131,11 +129,17 @@ export class MailService {
   public getAllLetters(): Observable<Letter[]> {
     return this._http.get<Letter[]>('http://test-api.javascript.ru/v1/tonyp/letters');
   }
+  public getLetterById(id: string): Observable<Letter> {
+    return this._http.get<Letter>('http://test-api.javascript.ru/v1/tonyp/letters/' + id);
+  }
   public addMailBoxes() {
     return this._http.post('http://test-api.javascript.ru/v1/tonyp', MAILBOXES);
   }
   public getMailBoxes(): Observable<Mailbox[]> {
     return this._http.get<Mailbox[]>('http://test-api.javascript.ru/v1/tonyp/mailboxes');
+  }
+  public getMailBoxById(id: string): Observable<Mailbox> {
+    return this._http.get<Mailbox>('http://test-api.javascript.ru/v1/tonyp/mailboxes/' + id);
   }
   public addLetters(letters) {
     return this._http.post('http://test-api.javascript.ru/v1/tonyp', letters);
@@ -145,29 +149,6 @@ export class MailService {
   }
   public deleteLetters() {
     return this._http.delete('http://test-api.javascript.ru/v1/tonyp/letters', {responseType: 'text'});
-  }
-  public getAllMails(): Mail[] {
-    return MAILS;
-  }
-
-  public getMailByType(type: string): Mail[] {
-    const mails: Mail[] = this.getAllMails();
-    const filteredMails: Mail[] = [];
-    for (const mail of mails) {
-      if (mail.type === type) {
-        filteredMails.push(mail);
-      }
-    }
-    return filteredMails;
-  }
-
-  public getMail(id: number) {
-    const mails: Mail[] = this.getAllMails();
-    for (const mail of mails) {
-      if (mail.id === id) {
-        return mail;
-      }
-    }
   }
 
   getLetters() {
