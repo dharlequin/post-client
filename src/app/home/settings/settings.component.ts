@@ -21,7 +21,6 @@ export class SettingsComponent implements OnInit {
       const mailboxes = boxes.mailboxes;
       console.log('Adding letters');
       const letters = this._mailService.getLetters();
-      console.log(letters);
       for (let i = 0; i < letters.letters.length; ++i) {
         letters.letters[i].mailbox = this._mailService.getIdByTitle(mailboxes, letters.letters[i].mailbox);
       }
