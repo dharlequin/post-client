@@ -132,8 +132,8 @@ export class MailService {
   public getLetterById(id: string): Observable<Letter> {
     return this._http.get<Letter>('http://test-api.javascript.ru/v1/tonyp/letters/' + id);
   }
-  public addMailBoxes() {
-    return this._http.post('http://test-api.javascript.ru/v1/tonyp', MAILBOXES);
+  public addMailBoxes(): Observable<any> {
+    return this._http.post<any>('http://test-api.javascript.ru/v1/tonyp', MAILBOXES);
   }
   public getMailBoxes(): Observable<Mailbox[]> {
     return this._http.get<Mailbox[]>('http://test-api.javascript.ru/v1/tonyp/mailboxes');

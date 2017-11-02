@@ -5,23 +5,32 @@ import {AppComponent} from './app.component';
 import {RouterModule} from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
-import {NavPanelComponent} from './home/nav-panel/nav-panel.component';
-import {MailListComponent} from './home/mail-list/mail-list.component';
+import {NavPanelComponent} from './home/mailbox/nav-panel/nav-panel.component';
+import {MailListComponent} from './home/mailbox/mail-list/mail-list.component';
 import {MailService} from './mail.service';
-import {MailComponent} from './home/mail-list/mail/mail.component';
+import {MailComponent} from './home/mailbox/mail-list/mail/mail.component';
 import {HttpClientModule} from '@angular/common/http';
 import { SettingsComponent } from './home/settings/settings.component';
+import {UserCardListComponent } from './home/user-card-list/user-card-list.component';
+import {UserCardComponent} from './home/user-card-list/user-card/user-card.component';
+import { MailboxComponent } from './home/mailbox/mailbox.component';
+import {UserService} from './user.service';
 
 const routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'home', redirectTo: 'home/box/inbox', pathMatch: 'full'},
+  {path: 'home', redirectTo: 'home/mailbox/inbox', pathMatch: 'full'},
   {path: 'home', component: HomeComponent,
     children: [
-      {path: 'box/:box', component: MailListComponent},
+      {path: 'mailbox', redirectTo: 'mailbox/inbox', pathMatch: 'full'},
+      {path: 'mailbox', component: MailboxComponent,
+        children: [
+          {path: ':box', component: MailListComponent},
+          {path: ':box/mail/:id', redirectTo: 'mail/:id', pathMatch: 'full'},
+          {path: 'mail/:id', component: MailComponent}
+      ]},
+      {path: 'contacts', component: UserCardListComponent},
       {path: 'settings', component: SettingsComponent},
-      {path: 'box/:box/mail/:id', redirectTo: 'mail/:id', pathMatch: 'full'},
-      {path: 'mail/:id', component: MailComponent}
     ]},
 ];
 
@@ -34,13 +43,16 @@ const routes = [
     MailListComponent,
     MailComponent,
     SettingsComponent,
+    UserCardListComponent,
+    UserCardComponent,
+    MailboxComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [MailService],
+  providers: [MailService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

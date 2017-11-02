@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {MailService} from '../../../mail.service';
-import {Letter} from '../../../letter';
+import {MailService} from '../../../../mail.service';
+import {Letter} from '../../../../letter';
 
 @Component({
   selector: 'app-mail',

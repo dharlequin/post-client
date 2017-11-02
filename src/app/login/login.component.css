@@ -57,3 +57,22 @@ label {
 .login-form-group {
   margin-bottom: 15px;
 }
+
+.login-btn {
+  color: #555555;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 10px;
+  transition: 0.3s;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: monospace;
+  background-color: #ffffff;
+}
+
+.login-btn:hover {
+  color: black;
+  background-color: antiquewhite;
+  transition: 0.3s;
+  border: 1px solid brown;
+}

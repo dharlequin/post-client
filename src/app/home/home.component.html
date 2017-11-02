@@ -1,6 +1,8 @@
-<div class="nav-panel">
-  <app-nav-panel></app-nav-panel>
+<div class="nav-tab">
+  <a class="tab-link" routerLink="mailbox" routerLinkActive="active">Mailbox</a>
+  <a class="tab-link" routerLink="contacts" routerLinkActive="active">Contacts</a>
+  <a class="tab-link" routerLink="settings" routerLinkActive="active">Settings</a>
+  <a class="tab-link" routerLink="/login" routerLinkActive="active">Logout</a>
 </div>
-<div class="mail-list">
-  <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>
+
