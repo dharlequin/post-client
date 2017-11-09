@@ -15,16 +15,17 @@ import {UserCardListComponent } from './home/user-card-list/user-card-list.compo
 import {UserCardComponent} from './home/user-card-list/user-card/user-card.component';
 import { MailboxComponent } from './home/mailbox/mailbox.component';
 import {UserService} from './user.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 const routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'home', redirectTo: 'home/mailbox/inbox', pathMatch: 'full'},
   {path: 'home', component: HomeComponent,
     children: [
-      {path: 'mailbox', redirectTo: 'mailbox/inbox', pathMatch: 'full'},
+      {path: '', redirectTo: 'mailbox/inbox', pathMatch: 'full'},
       {path: 'mailbox', component: MailboxComponent,
         children: [
+          {path: '', redirectTo: 'inbox', pathMatch: 'full'},
           {path: ':box', component: MailListComponent},
           {path: ':box/mail/:id', redirectTo: 'mail/:id', pathMatch: 'full'},
           {path: 'mail/:id', component: MailComponent}
@@ -50,7 +51,9 @@ const routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [MailService, UserService],
   bootstrap: [AppComponent]

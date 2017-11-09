@@ -3,3 +3,12 @@
   <a class="button-link" (click)="clearMailboxDatabase()">Clear Mailbox DB</a>
   <a class="button-link" (click)="fillContactsDatabase()">Fill Contacts DB</a>
 </div>
+<form class="settings-container" [formGroup]="newUserFormControl">
+      <h2>Create New User</h2>
+      <input class="input" placeholder="First Name" formControlName="firstName">
+      <input class="input" placeholder="Last Name" formControlName="lastName">
+      <input class="input" placeholder="Gender" formControlName="gender">
+      <input class="input" placeholder="Birthdate" type="date" formControlName="birthdate">
+      <input class="input" placeholder="E-mail">
+      <button class="button-link" type="submit">Create</button>
+</form>

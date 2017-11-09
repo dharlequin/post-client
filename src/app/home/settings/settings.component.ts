@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MailService} from '../../mail.service';
 import {UserService} from '../../user.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {User} from '../../user';
 
 @Component({
   selector: 'app-settings',
@@ -8,11 +10,23 @@ import {UserService} from '../../user.service';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
+  newUserFormControl: FormGroup;
 
-  constructor(private _mailService: MailService, private _userService: UserService) {
+  constructor(
+    private _mailService: MailService,
+    private _userService: UserService) {
   }
 
   ngOnInit() {
+    this.newUserFormControl = new FormGroup({
+      firstName: new FormControl([''], [Validators.minLength(2)]),
+      lastName: new FormControl([''], [Validators.minLength(2)]),
+      gender: new FormControl([''], [Validators.required]),
+      birthdate: new FormControl([''], [this.birthdateValidator]),
+      email: new FormControl([''], [Validators.required])
+    });
+    this.newUserFormControl.valueChanges.subscribe(value => console.log(value));
+    this.newUserFormControl.statusChanges.subscribe(value => console.log(value));
   }
 
   public fillMailboxDatabase() {
@@ -33,8 +47,33 @@ export class SettingsComponent implements OnInit {
     this._mailService.deleteMailboxes().subscribe(_ => this._mailService.deleteLetters().subscribe());
   }
 
-  private fillContactsDatabase() {
+  public fillContactsDatabase() {
     this._userService.addUsers().subscribe();
+  }
+
+  public birthdateValidator(formControl: FormControl) {
+    const date: Date = formControl.value;
+    console.log('Entered date: ' + date);
+    const currentDate: Date = new Date();
+    console.log('Current date: ' + currentDate);
+    if (date !== null) {
+      const age: number = currentDate.getDate() - date.getDate();
+      console.log(age);
+      if (age < 18) {
+        return {birthdateValidator: {message: 'User must be older than 18!'}};
+      }
+    }
+    return null;
+  }
+
+  public addNewUser() {
+    console.log('Entered function');
+    const user: User = new User;
+    user.birthdate = this.newUserFormControl.controls.birthdate.value;
+    user.gender = this.newUserFormControl.controls.gender.value;
+    user.email = this.newUserFormControl.controls.email.value;
+    user.fullname = this.newUserFormControl.controls.firstName.value + ' ' + this.newUserFormControl.controls.lastName.value;
+    console.log('New user built ' + user);
   }
 
 }
